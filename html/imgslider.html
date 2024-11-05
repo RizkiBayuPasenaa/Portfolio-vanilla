@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galery</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap'">
+    <style>
+body {
+    background-color: #1f242d;
+    font-family: "Poppins", sans-serif;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15rem;
+  color: #fff000;
+  opacity: 50%;
+}
+
+@keyframes move-right {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 200px;
+  }
+}
+h1 {
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 3%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 3);
+}
+
+
+    </style>
+</head>
+<body>
+  <div class="title">
+    <h1>L LATEST P PROJECT</h1>
+  </div>
+    <div class="slider">
+  <div class="slide active">
+    <img src="/img/food_app.png" alt="Slide 1">
+  </div>
+  <div class="slide">
+    <img src="/img/next.png" alt="Slide 2">
+  </div>
+  <div class="slide">
+    <img src="/img/music_app.png" alt="Slide 3">
+  </div>
+  <div class="slide">
+    <img src="/img/web_design.png" alt="Slide 4">
+  </div>
+  <div class="slide">
+    <img src="/img/music_app.png" alt="Slide 5">
+  </div>
+</div>
+
+</body>
+
+<script>
+    let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+const maxIndex = slides.length - 1;
+
+function showSlide(index) {
+  if (index < 0) {
+    index = maxIndex;
+  } else if (index > maxIndex) {
+    index = 0;
+  }
+
+  slides.forEach(slide => slide.classList.remove('active'));
+  slides[index].classList.add('active');
+  slideIndex = index;
+}
+
+showSlide(slideIndex);
+
+setInterval(() => {
+  showSlide(slideIndex + 1);
+}, 3000);
+
+</script>
+</html>
